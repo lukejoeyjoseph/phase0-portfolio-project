@@ -1,0 +1,460 @@
+/* ###### */
+/* GLOBAL */
+/* ------ */
+
+*,
+*::before,
+*::after {
+    /* border: .1px dotted hotpink; */
+    box-sizing: border-box;
+}
+
+/* Novel treatment; interesting. */
+:focus {
+    outline: 3px solid var(--clr-accent);
+    outline-offset: 3px;
+}
+
+:root {
+    --bs: .25em .25em .75em rgba(0,0,0, .25),
+          .125em .125em .25em rgba(0,0,0, .15);
+
+    --clr-light: white;
+    --clr-dark: #303030;
+    --clr-accent: #16e0bd;
+
+    --ff-primary: 'Source Sans Pro', sans-serif;
+    --ff-secondary: 'Source Code Pro', monospace;
+
+    --fs-h1: 3rem;
+    --fs-h2: 2.25rem;
+    --fs-h3: 1.25rem;
+    --fs-body: 1rem;
+
+    --fw-reg: 300;
+    --fw-bold: 900;
+}
+
+/* ------ */
+
+html { scroll-behavior: smooth; }
+
+body {
+    background: var(--clr-light);
+    color: var(--clr-dark);
+    font-family: var(--ff-primary);
+    font-size: var(--fs-body);
+    line-height: 1.6;
+    margin: 0;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+/* ------ */
+
+@media (min-width: 800px) {
+
+    :root {
+        --fs-h1: 4.5rem;
+        --fs-h2: 3.75rem;
+        --fs-h3: 1.5rem;
+        --fs-body: 1.125rem;
+    }
+
+}
+
+
+/* ########## */
+/* TYPOGRAPHY */
+/* ---------- */
+
+h1,
+h2,
+h3,
+p { margin-top: 0; }
+
+h1,
+h2,
+h3 { line-height: 1.1; }
+
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); }
+
+h1,
+h2 { margin-bottom: .25em; }
+
+.subtitle-p--intro,
+.subtitle-p--about {
+    background: var(--clr-accent);
+    font-family: var(--ff-secondary);
+}
+
+/* ---------- */
+
+.intro-h1 {
+    font-weight: var(--fw-reg);
+    line-height: 1;
+}
+
+.services-h2 { color: var(--clr-accent); }
+
+.services-h2::after {
+    background: var(--clr-light); /* currentColor; */
+    content: '';
+    display: block;
+    height: 1px;
+    margin: .5em auto 1em;
+    opacity: .25;
+    width: 2em;
+}
+
+.portfolio-item-p {
+    margin-right: auto; margin-left: auto;
+    max-width: 600px;
+}
+
+.subtitle-p {
+    font-size: var(--fs-h3);
+    margin: 0 0 1em;
+    padding: .25em 1em;
+}
+
+.subtitle-p--intro {
+    display: inline-block;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.subtitle-p--portfolio {
+    color: var(--clr-accent);
+    font-weight: var(--fw-bold);
+    margin-bottom: 2em;
+}
+
+/* ---------- */
+
+.span-intro-h1-own-line {
+    display: block; /* always own line */
+    font-weight: var(--fw-bold);
+}
+
+/* Nested images are displayed as block; see global resets atop */
+/* valid html: blocks cannot be nested in inline parents (<a> is inline) */
+/* interestingly, inline-block puts space around the anchors/imagess, block does not */
+.a-portfolio-item {
+    background: var(--clr-accent);
+    display: inline-block;
+    overflow: hidden;
+}
+
+.a-portfolio-item:focus { z-index: 2; }
+
+.a-footer-mailto,
+.a-footer-social { color: var(--clr-accent); }
+
+.a-footer-mailto {
+    font-weight: var(--fw-bold);
+    margin-bottom: 1em;
+    text-decoration: none;
+}
+
+.a-footer-social {
+    margin: 0 .5em;
+    padding: .5em; /* make room for finger tapping on mobile */
+}
+
+.a-footer-mailto:hover,
+.a-footer-social:hover { opacity: .7; }
+
+.a-footer-mailto:hover { text-decoration: underline; }
+
+.a-btn--services-to-portfolio {
+    background: var(--clr-accent);
+    color: var(--clr-dark);
+    cursor: pointer;
+    display: inline-block;
+    font-weight: var(--fw-bold);
+    margin-top: 3em;
+    padding: .625em 2.5em;
+    text-decoration: none;
+    transition: transform .35s ease-in-out;
+}
+
+ /* hove scale transform only works if <a> has display: inline-block; */
+.a-btn--services-to-portfolio:hover { transform: scale(1.1); }
+
+
+/* ############ */
+/* HEADER / NAV */
+/* ------------ */
+
+/* --- Nav hamburger: --- */
+
+.span-hamburger-center {
+    display: block;
+    position: relative;
+}
+
+.span-hamburger-center,
+.span-hamburger-center::before,
+.span-hamburger-center::after {
+    background: var(--clr-accent);
+    height: 3px;
+    transition: transform .25s ease-in-out; /* hamburger to X */
+    width: 2em;
+}
+
+.span-hamburger-center::before,
+.span-hamburger-center::after {
+    content: '';
+    left: 0;
+    position: absolute;
+}
+
+.span-hamburger-center::before { top: -6px; }
+
+.span-hamburger-center::after { top: 6px; }
+
+/* --- EOF nav hamburger --- */
+
+.header-nav-ul {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-evenly;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.a-header-nav {
+    color: inherit;
+    font-size: var(--fs-h2);
+    font-weight: var(--fw-bold);
+    text-decoration: none;
+}
+
+.a-header-nav:hover { color: var(--clr-accent); }
+
+.btn--toggle-header-nav {
+    background: transparent;    /* remove button's      */
+    border: 0;                  /* default appearance   */
+    cursor: pointer;
+    padding: .5em;
+    /* fixed for fixed :) */
+    position: absolute; top: 1em; right: 1em;
+    z-index: 101; /* nav has 100 */
+}
+
+/* ----------------- */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+}
+
+.header-nav {
+    background: var(--clr-dark);
+    color: var(--clr-light);
+    position: fixed; top: 0; right: 0; bottom: 0; left: 0;
+    transform: translateX(100%);
+    transition: transform .25s cubic-bezier(.5, 0, .5, 1);
+    z-index: 100;
+}
+
+.header-logo { max-width: 110px; }
+
+/* Novel approach: */
+/*  .header-nav--open state class is toggled on document's body */
+/*  see application.js */
+.header-nav--open .header-nav { transform: translateX(0); }
+
+/* shorten hamburger piece(s) so the X fits bettter into the :focus outline */
+.header-nav--open .span-hamburger-center,
+.header-nav--open .span-hamburger-center::before { width: 1.4em; }
+
+.header-nav--open .btn--toggle-header-nav {
+    padding-right: .8em; padding-left: .8em;
+    position: fixed;
+}
+
+.header-nav--open .span-hamburger-center { transform: rotate(.625turn); }
+
+.header-nav--open .span-hamburger-center::before {
+    transform:  rotate(.25turn)
+                translateX(6px);
+}
+
+/* only two hamburger pieces needed to make the X; hide the bottom one */
+.header-nav--open .span-hamburger-center::after { content: unset; } /* or opacity: 0; */
+
+
+/* ###### */
+/* LAYOUT */
+/* ------ */
+
+footer {
+    background: #111;
+    display: flex;
+    flex-direction: column;
+    font-size: var(--fs-h3);
+    align-items: center;
+    padding: 3em 0;
+}
+
+.portfolio-items {
+    display: grid;
+    grid-gap: 1em;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    justify-items: center;
+}
+
+section { padding: 5em 2em; }
+
+.section-intro { position: relative; }
+
+.section-portfolio {
+    background: var(--clr-dark);
+    color: var(--clr-light);
+    text-align: center;
+}
+
+.section-portfolio-item {
+    margin: 0 auto;
+    max-width: 964px;
+    padding: 0 2em 2em;
+}
+
+.section-services {
+    background-blend-mode: difference;
+    background-color: var(--clr-dark);
+    background-image: url('/img/services-bg.jpg');
+    color: var(--clr-light);
+    text-align: center;
+}
+
+.services-col {
+    margin: 0 auto 2em;
+    max-width: 500px;
+}
+
+/* ----- */
+
+.about-img,
+.intro-img { box-shadow: var(--bs); }
+
+.portfolio-img {
+    transition: opacity .35s,
+                transform .75s cubic-bezier(.5,0,.5,1);
+}
+
+.portfolio-img:hover,
+.a-portfolio-item:focus .portfolio-img {
+    opacity: .6;
+    transform: scale(1.2);
+}
+
+.portfolio-item-img { margin-bottom: 1em; }
+
+/* ----- */
+
+@media (min-width: 600px) {
+
+    /* --- Intro section set up. Very interesting, rich in novelty. Study, review. --- */
+    .section-intro {
+        column-gap: 2em;
+        display: grid;
+        grid-template-areas:
+            'image heading'
+            'image subtitle';
+        grid-template-columns: min-content max-content;
+        margin: 0 auto;
+        width: min-content; /* totally new (to me) .. remember this */
+    }
+
+    .intro-h1 { grid-area: heading; }
+
+    .subtitle-p--intro {
+        align-self: start;
+        grid-column: 1 / -1;
+        grid-row: 2; /* must declare to overlap with the image */
+        /* --- Grow section subtitle to the left under the image: --- */
+        position: relative; /* make the growth with left & width possible */
+        left: -1.5em;
+        width: calc(100% + 1.5em); /* re-fill the gap after shift to left */
+        /* could also be done with: position: absolute; right: 0; left: -1.5em; */
+        z-index: -1; /* push down after relative's new stacking order */
+        /* --- */
+        /* left bleed + img width + column gap */
+        /* 30(=1.5*1.25rem) + 250 + 32(=2*1rem) */
+        padding-left: 312px;
+    }
+
+    .intro-img {
+        grid-area: image;
+        min-width: 250px; /* counter grid min-content column shrinking img to 0 */
+    }
+    /* --- EOF Intro section set up --- --- --- --- --- --- --- --- --- --- --- ---  */
+
+    /* --- About section set up. Diff from Kevin's. --- */
+    /* Kevin set section's max width with max-width, because no background color */
+    .about-h2 { grid-area: heading; }
+
+    .subtitle-p--about {
+        grid-column: 2 / -2;
+        grid-row: 2;
+        position: relative;
+        left: -1em;
+        width: calc(100% + 2em); /* 1em to offset left shit, 1em for right bleed */
+        padding-right: 254px; /* 36(column gap) + 200(img width) + 18(right bleed) */
+        z-index: -1;
+    }
+
+    .article-about { grid-area: article; }
+
+    /* 732 = 964 - 200 - 32, where 964 = see .section-services grid below */
+    /* 200 min is arbitrary */
+    .section-about {
+        column-gap: 2em;
+        display: grid;
+        grid-template-columns: 1fr minmax(200px, 732px) 200px 1fr;
+        grid-template-areas:
+            '. heading  image .'
+            '. subtitle image .'
+            '. article  image .';
+    }
+
+    .about-img { grid-area: image; }
+    /* --- EOF About section set up --- --- --- --- --- --- */
+
+}
+
+@media (min-width: 800px) {
+
+    .services-h2,
+    .a-btn--services-to-portfolio { grid-column: 2 / -2; }
+
+    /* left bleed + img width + column gap */
+    /* 36(=1.5*1.5rem) + 250 + 36(=2*1.125rem) */
+    .subtitle-p--intro { padding-left: 322px; }
+
+    .a-btn--services-to-portfolio { justify-self: center; }
+
+    /* Effective content max-width: 964 = 300*3 + 32*2 */
+    /* (close to Kevin's flexbox max-width: 1000;) */
+    /* 200 min is arbitrary */
+    .section-services {
+        column-gap: 2em;
+        display: grid;
+        grid-template-columns: 1fr repeat(3, minmax(200px, 300px)) 1fr;
+    }
+
+    .services-col:first-of-type { grid-column: 2; }
+
+}
